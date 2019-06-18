@@ -1,8 +1,11 @@
 import path from 'path';
 import fs from 'fs';
 
-import React from 'react';
 import express from 'express';
+import bodyParser from 'body-parser';
+import chargeRoutes from "./routes/api/v1/charge"
+
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from "react-router-dom";
 
@@ -12,6 +15,12 @@ const PORT = process.env.PORT || 3006;
 const app = express();
 
 app.use(express.static('build/'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use("/charge", chargeRoutes);
 
 app.get('/*', (req, res) => {
     const react_app = ReactDOMServer.renderToString(

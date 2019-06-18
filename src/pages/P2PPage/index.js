@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import CheckoutForm from "./../../components/CheckoutForm";
 
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 export default class P2PPage extends Component {
 
     constructor() {
@@ -20,6 +23,22 @@ export default class P2PPage extends Component {
                 this.setState({ stripe: window.Stripe('pk_test_bEa1MzXESTbRKCAgrpCjmHH000IrRQU0TB') });
             });
         }
+    }
+
+    onCheckoutFormSubmit(result) {
+        console.log("result is ")
+        console.log(result);
+        fetch("/charge", {
+            method: "POST",
+            body: JSON.stringify(result),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+            .then(result => console.log(result))
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
@@ -47,7 +66,10 @@ export default class P2PPage extends Component {
                     <br />
                     <StripeProvider stripe={this.state.stripe} className={`pt-16`}>
                         <Elements>
-                            <CheckoutForm price="25" paymentRequest={paymentRequest} />
+                            <CheckoutForm
+                                price="25"
+                                paymentRequest={paymentRequest}
+                                onSubmit={this.onCheckoutFormSubmit} />
                         </Elements>
                     </StripeProvider>
                 </div>
