@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.0",
+    "es6-promise": "^4.2.8",
     "google-maps-react": "^2.0.2",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
@@ -21,8 +25,9 @@
     "eject": "react-scripts eject",
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
     "dev:start": "nodemon ./server-build/index.js",
-    "dev": "npm-run-all --parallel build dev:*"
+    "dev": "concurrently \"yarn start\" \"yarn dev:build-server\" \"yarn dev:start\""
   },
+  "proxy": "http://localhost:3006",
   "eslintConfig": {
     "extends": "react-app"
   },
