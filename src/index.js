@@ -4,11 +4,25 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
+import {createStore, applyMiddleware, compose} from 'redux'
+import { Provider } from "react-redux";
+import thunk from 'redux-thunk'
+import {reactReduxFirebase, getFirebase} from 'react-redux-firebase'
+import fbConfig from './config/fbConfig'
 
+import rootReducer from './store/reducer/rootReducer'
+
+const store = createStore(rootReducer, 
+    compose( applyMiddleware(thunk.withExtraArgument({getFirebase})),
+        reactReduxFirebase(fbConfig)
+    )
+)
 ReactDOM.hydrate(
-    <Router>
-        <App />
-    </Router>,
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
     document.getElementById('root')
 );
 

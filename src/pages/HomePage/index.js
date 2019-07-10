@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import MapComponent from '../../components/MapComponent';
+import {Link, Route, Switch} from 'react-router-dom'
+
 
 export default class HomePage extends Component {
     static propTypes = {
@@ -11,6 +13,8 @@ export default class HomePage extends Component {
         return (
             <div className={`max-w-full`}>
                 <MapComponent collection={featureCollection} />
+                <br/>
+                <Link to="../samvid">touch me</Link>
             </div>
         )
     }

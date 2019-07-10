@@ -43,11 +43,11 @@ export default class P2PPage extends Component {
             <div className={`my-24`}>
                 <div className={`p-6 bg-white rounded-lg shadow-lg`}>
                     <p className={`text-2xl`}> {`Weplay Pro`} </p>
-                    <p className={`text-2xl`}> {`25$`} </p>
+                    <p className={`text-2xl`}> {`20$`} </p>
                     <br />
                     <StripeProvider stripe={this.state.stripe} className={`pt-16`}>
                         <Elements>
-                            <CheckoutForm price="25" paymentRequest={paymentRequest} />
+                            <CheckoutForm price="20" paymentRequest={paymentRequest} />
                         </Elements>
                     </StripeProvider>
                 </div>
