@@ -14,7 +14,6 @@
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
     "es6-promise": "^4.2.8",
-    "google-maps-react": "^2.0.2",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -40,22 +39,7 @@
     "dev:start": "nodemon ./server-build/index.js",
     "dev": "concurrently \"yarn start\" \"yarn dev:build-server\" \"yarn dev:start\""
   },
-  "proxy": "http://localhost:3006",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
