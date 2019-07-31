@@ -7,7 +7,7 @@ const SignOut = (props) =>{
 
     return(
         <ul className={`flex flex-row`}>
-            <li className={`mr-4`}> <Link to='/login'>Profile</Link> </li>
+            <li className={`mr-4`}> <Link to='/userprofile'>Profile</Link> </li>
             <li id={'SignOut'}> <Link to='/' onClick={props.signOut}>Sign Out</Link></li>
         </ul>
     )

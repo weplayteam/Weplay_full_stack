@@ -12,7 +12,7 @@ import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
 import P2PPage from './pages/P2PPage';
 import Navbar from './components/NavBar';
-import Samvid from './pages/Samvid';
+import  UserProfile  from './pages/profilePage';
 
 class App extends Component {
   
@@ -23,6 +23,7 @@ class App extends Component {
   }
 
   render(){
+    const {auth} = this.props
     return (
       <div className="font-sans bg-gray-100 min-h-screen">
         {/* <Helmet>
@@ -31,12 +32,12 @@ class App extends Component {
           <script>$(function(){$("#nav-placeholder").load("/html/nav.html")});</script>
         </Helmet>  */}
 
-        <Navbar/>
+        <Navbar style={{zIndex:"2"}}/>
         
-        <div className={`container mx-auto`}>
+        {/* <div className={`container mx-auto`}> */}
           <Switch>
             <Route exact path="/">
-              <HomePage />
+              <HomePage/>
             </Route>
             <Route exact path="/about">
               <AboutPage />
@@ -50,19 +51,24 @@ class App extends Component {
             <Route exact path="/p2p">
               <P2PPage />
             </Route>
-            <Route exact path="/samvid">
-              <Samvid/>
-            </Route>
+            <Route 
+              exact path="/userprofile" 
+              render = {()=>(
+                auth.uid?<UserProfile/>:<LoginPage/>
+              )}
+            />
           </Switch>
-        </div>
+        {/* </div> */}
       </div>
     );
   }
 }
-// const mapStateToProps = (state) => {
-//   auth: state.firebase.auth
-// }
+const mapStateToProps = (state) => {
+  return{
+    auth: state.firebase.auth
+  }
+}
 
-// export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App);
 
-export default App
+//export default App

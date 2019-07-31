@@ -66,14 +66,10 @@ export default class P2PPage extends Component {
                     <br />
                     <StripeProvider stripe={this.state.stripe} className={`pt-16`}>
                         <Elements>
-<<<<<<< HEAD
-                            <CheckoutForm price="20" paymentRequest={paymentRequest} />
-=======
                             <CheckoutForm
                                 price="25"
                                 paymentRequest={paymentRequest}
                                 onSubmit={this.onCheckoutFormSubmit} />
->>>>>>> 016dc532725945e316695f38b078ee8809d0e3cc
                         </Elements>
                     </StripeProvider>
                 </div>

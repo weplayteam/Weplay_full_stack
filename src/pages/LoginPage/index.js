@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Helmet} from "react-helmet";
 import {connect} from 'react-redux'
 import {signIn} from '../../store/actions/authActions'
+import {Link} from 'react-router-dom'
 // import * as firebase from 'firebase/app';
 
 // // Your web app's Firebase configuration
@@ -101,7 +102,7 @@ class LoginPage extends Component {
                         <br />
                         <input className={`w-64 my-6 bg-gray-100 p-4`} placeholder={`password`} id={`password`} type="password"></input>
                         <br />
-                        <button type="submit" className={`btn btn-indigo w-full`} id={`quickstart-sign-in`} >login</button>
+                        <Link to="../userprofile"><button type="submit" className={`btn btn-indigo w-full`} id={`quickstart-sign-in`} >login</button></Link>
                         <div className="red-text center">
                           {authError? <p>{authError}</p>: null}
                         </div>

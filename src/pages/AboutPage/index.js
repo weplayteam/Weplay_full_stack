@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ProfileCard from './../../components/ProfileCard';
 
+
 export default class AboutPage extends Component {
 
     teammates = [];
@@ -15,7 +16,8 @@ export default class AboutPage extends Component {
 
     render() {
         return (
-            <div className={`mt-24`}>
+            
+            <div className={`mt-24 mx-64`}>
                 <div>
                     <h1 className={`text-2xl`}>About us!</h1>
                     <p>We are a tight, niche group of young entrepreneurs. Our shared values and beliefs influence the work that we do, along with the positive impact we hope to instill in communities.

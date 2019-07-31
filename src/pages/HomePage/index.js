@@ -11,7 +11,7 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <div className={`max-w-full`}>
+            <div className={`min-w-full`}>
                 <MapComponent collection={featureCollection} />
                 <br/>
                 <Link to="../samvid">touch me</Link>

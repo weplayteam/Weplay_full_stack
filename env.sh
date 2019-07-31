@@ -1,0 +1,3 @@
+export STREAM_APP_ID=56077
+export STREAM_KEY=9xvgkcwbd776
+export STREAM_SECRET=rdsp4gvbwpn97q9xzzsea96ekvekvqk3n8jyjeq7g46nbppqaabctfnkud47raae

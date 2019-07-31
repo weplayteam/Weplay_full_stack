@@ -28,19 +28,21 @@ class MapComponent extends Component {
         } = this.props.collection;
 
         return (
-            <div className={`w-full h-screen`}>
+            <div className={`h-screen`}>
                 <Map google={this.props.google}
                     zoom={12}
                     initialCenter={{
                         lat: 29.761993,
                         lng: -95.366302
                     }}
-                    mapTypeId={`terrain`}
-                    containerStyle={{
-                        width: "100%",
+                    mapTypeId={`terrain`}>
+                    {/* containerStyle={{
+                        width: "1000px",
                         height: "100%",
-                        position: "relative"
-                    }}>
+                        position: "relative",
+                        float: "right"
+                        // left:"-8%"
+                    }}> */}
 
                     {
                         features.map(feature => {

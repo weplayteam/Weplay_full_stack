@@ -14,7 +14,8 @@ import App from '../src/App';
 
 const app = express();
 var mysql = require('mysql');
-var bodyParser = require('body-parser');
+var stream = require('getstream');
+// var bodyParser = require('body-parser');
 
 // BodyParser Middleware
 app.use(bodyParser.json());
@@ -22,6 +23,34 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 const PORT = process.env.PORT || 3001;
+
+// // Instantiate a new client (server side)
+// client = stream.connect('9xvgkcwbd776', 'rdsp4gvbwpn97q9xzzsea96ekvekvqk3n8jyjeq7g46nbppqaabctfnkud47raae', '56077');
+// // Instantiate a new client (client side)
+// client = stream.connect('9xvgkcwbd776', null, '56077');
+var streamClient = stream.connect(YOUR_API_KEY, YOUR_API_SECRET);
+console.log(YOUR_API_SECRET)
+
+// instantiate a feed using feed class 'user_posts' and the actor user id
+var userFeed = streamClient.feed('user_posts', ACTOR_USER_ID);
+
+// build activity object
+var activity = {
+    actor: $actorId,
+    verb: "add",
+    object: "upload:$objectId",
+    foreign_id: "foreign_id:$foreignId",
+    time: new Date()
+}
+
+// add activity to the feed
+userFeed.addActivity(activity)
+        .then(function(response) {
+           console.log(response);
+        })
+        .catch(function(err) {
+           console.log(err);
+         });
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //SET UP CONNECTION TO DATABASE
@@ -53,6 +82,7 @@ app.post('/signup', function(req, res){
     var email = req.body.email;
     var password = req.body.password;
     var password2 = req.body.conf_password;
+    
     console.log("checking passwords")
     // if (password == password2){
         console.log("checking passwords2")
@@ -82,7 +112,9 @@ app.post('/signup', function(req, res){
 ////////////////////////////////////////////////////////////////////////////////////////
 //CONFIGURE ACCESS TO STATIC FILES AND ENTRY POINT
 ////////////////////////////////////////////////////////////////////////////////////////
-app.use(express.static('build/'));
+// app.use(express.static('build/'));
+app.use(express.static('../src'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
