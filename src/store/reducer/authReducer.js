@@ -1,6 +1,7 @@
 const initState =
 {
     authError: null,
+    userToken: null
     // auth: JSON.parse(localStorage.yourObject)
 }
 
@@ -17,13 +18,14 @@ const authReducer = (state = initState, action) => {
             console.log('login success')
             return{
                 ...state,
-                 authError: null
+                 authError: null,
+                 userToken: action.uToken
             }
         case 'SIGNUP_SUCCESS':
             console.log('Sign Up Successful')
             return state
         
-        case 'SIGNUP_SUCCESS':
+        case 'SIGNUP_ERROR':
             console.log('Sign Up Error')
             return state
         

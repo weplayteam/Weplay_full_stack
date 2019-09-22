@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Helmet} from "react-helmet";
 import {connect} from 'react-redux'
 import {signIn} from '../../store/actions/authActions'
 import {Link} from 'react-router-dom'

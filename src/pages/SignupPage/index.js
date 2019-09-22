@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {signUp} from '../../store/actions/authActions'
+import {Link} from 'react-router-dom'
 // import * as firebase from 'firebase/app'
 
 // var mysql = require('mysql');
@@ -53,11 +54,15 @@ class SignupPage extends Component {
         return (
             <div className={`mt-24`}>
                 <div className={`flex flex-row justify-center`}>
-                    <form action = "/signup" method="post" className={`p-12 bg-white rounded shadow-lg rounded`} onSubmit={this.handleSubmit()}>
+                    <form action = "/signup" method="post" className={`p-12 bg-white rounded shadow-lg rounded`} onSubmit={this.handleSignUp}>
                     {/* <div className={`p-12 bg-white rounded shadow-lg rounded`} > */}
-                        <label>{"Username/e-mail: "}</label>
+                        <label>{"Username: "}</label>
                         <br />
-                        <input placeholder={`username/e-mail`} className={`w-64 my-6 bg-gray-100 p-4`} id={`email`} type="text" name={`email`}></input>
+                        <input placeholder={`username`} className={`w-64 my-6 bg-gray-100 p-4`} id={`username`} type="text" name={`username`}></input>
+                        <br />
+                        <label>{"E-mail: "}</label>
+                        <br />
+                        <input placeholder={`E-mail`} className={`w-64 my-6 bg-gray-100 p-4`} id={`email`} type="text" name={`email`}></input>
                         <br />
                         <label>{"Password: "}</label>
                         <br />
@@ -74,18 +79,21 @@ class SignupPage extends Component {
             </div>
         )
     }
-    handleSubmit(){
-      // e.preventDefault()
-      console.log("pressed submit")
-    }
+    // handleSubmit(){
+    //   // e.preventDefault()
+    //   console.log("pressed submit")
+    // }
 
     handleSignUp = (e) => {
-      console.log("pressed submit")
+      e.preventDefault()
+      console.log("pressed submit bitch")
 
       // e.preventDefault();
       var email = document.getElementById('email').value;
       var password = document.getElementById('password').value;
-      // this.props.signUp({email: email, password: password})
+      var user = document.getElementById('username').value;
+      console.log(user)
+      this.props.signUp({email: email, password: password, userName: user})
 
     //   fetch('/signup', {
     //       method: 'POST',

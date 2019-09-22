@@ -12,7 +12,7 @@ import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
 import P2PPage from './pages/P2PPage';
 import Navbar from './components/NavBar';
-import  UserProfile  from './pages/profilePage';
+import UserProfile  from './pages/profilePage';
 
 class App extends Component {
   

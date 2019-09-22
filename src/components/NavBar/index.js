@@ -3,12 +3,6 @@ import {Link} from 'react-router-dom'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
 import {connect} from 'react-redux'
-// import zIndex from '@material-ui/core/styles/zIndex';
-// import * as firebase from 'firebase';
-
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-// Be sure to include styles at some point, probably during your bootstraping
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 class NavBar extends Component{
     constructor(props) {
@@ -39,7 +33,6 @@ class NavBar extends Component{
     render(){
             const {auth} = this.props
             const links = auth.uid ? <SignOut/> : <SignIn/>
-            // console.log(this.props)
             return(
                 <div className={`sticky top-0 z-10`}>
                 <nav className={`bg-black text-white p-4 flex flex-row items-center`}>

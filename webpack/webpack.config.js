@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: './server/index.js',
+    entry: './server/main.js',
 
     target: 'node',
 
@@ -26,10 +26,9 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
-                // use: {
-                //     loader: 'postcss-loader'
-                // }
+                use: {
+                    loader: 'postcss-loader',
+                }
             }
         ]
     }
